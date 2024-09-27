@@ -13,7 +13,6 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 
 const API_KEY = 'YOUR_API_KEY';
 
-// Update time and date every second
 setInterval(() => {
     const time = new Date();
     const month = time.getMonth();
@@ -28,26 +27,22 @@ setInterval(() => {
     dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month];
 }, 1000);
 
-// Default to Dhaka, Bangladesh coordinates
 const dhakaLat = 23.8041;
 const dhakaLon = 90.4152;
 
-// Get weather data based on geolocation or default to Dhaka, Bangladesh
+
 getWeatherData();
 function getWeatherData() {
-    fetchWeatherData(dhakaLat, dhakaLon); // Default to Dhaka first
+    fetchWeatherData(dhakaLat, dhakaLon); 
     
-    // Try to get geolocation if available
     navigator.geolocation.getCurrentPosition((success) => {
         let { latitude, longitude } = success.coords;
         fetchWeatherData(latitude, longitude);
     }, () => {
-        // If location access is denied or unavailable, keep Dhaka as default
         console.log('Geolocation not available. Defaulting to Dhaka, Bangladesh.');
     });
 }
 
-// Fetch weather data with provided latitude and longitude
 function fetchWeatherData(latitude, longitude) {
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
         .then(res => res.json())
@@ -57,7 +52,6 @@ function fetchWeatherData(latitude, longitude) {
         });
 }
 
-// Show weather data
 function showWeatherData(data) {
     let { humidity, pressure, sunrise, sunset, wind_speed } = data.current;
 
@@ -113,7 +107,6 @@ function showWeatherData(data) {
     weatherForecastEl.innerHTML = otherDayForcast;
 }
 
-// City search functionality
 searchBtn.addEventListener('click', () => {
     const city = cityInput.value;
     if (city) {
@@ -121,7 +114,6 @@ searchBtn.addEventListener('click', () => {
     }
 });
 
-// Fetch weather data for the entered city
 function getCityWeatherData(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
         .then(res => res.json())
@@ -135,7 +127,6 @@ function getCityWeatherData(city) {
         .catch(error => console.error('Error fetching city weather:', error));
 }
 
-// Update weather data in the UI for the entered city
 function updateWeatherDataForCity(data) {
     const { main: { humidity, pressure, temp }, wind: { speed }, sys: { country }, weather, name, coord } = data;
     const { icon } = weather[0];
@@ -143,7 +134,6 @@ function updateWeatherDataForCity(data) {
     timezone.innerHTML = name;
     countryEl.innerHTML = country;
 
-    // Get the current date for the searched city
     const currentCityDate = new Date(); // This will use the local timezone
     const cityDate = currentCityDate.toLocaleDateString(); // Format date as needed
 
@@ -173,8 +163,7 @@ function updateWeatherDataForCity(data) {
             <div class="temp">Current Temperature - ${temp}&#176;C</div>
         </div>
     `;
-
-    // Fetch 7-day weather forecast for the searched city using its coordinates
+    
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
         .then(res => res.json())
         .then(data => {
