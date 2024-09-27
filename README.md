@@ -11,4 +11,5 @@ HOW TO USE THE CODE:
 7) Install the "Live Server" extension.
 
 8) Select "Open with Live Server" by doing a right-click on the name of the HTML file.
+
 Have fun!
