@@ -93,13 +93,13 @@ body {
     border: 1px solid #eee;
 }
 
-/* Updated Current Temperature Container */
+
 .current-temp-container {
     display: flex;
     justify-content: start;
     align-items: center;
-    background: rgba(0, 0, 0, 0.7); /* Blackish with transparency */
-    color: white; /* White text for better readability */
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
     padding: 30px;
     border-radius: 15px;
     max-width: 400px;
@@ -132,15 +132,14 @@ body {
 
 .temp-description {
     font-size: 18px;
-    color: #ddd; /* Lighter color for description */
+    color: #ddd;
 }
 
-/* Ensure icon and temperature info stays after search */
 #city-input:focus + #search-btn + .current-temp-container {
     display: flex;
 }
 
-/* Media Queries for responsiveness */
+
 @media only screen and (max-width: 730px) {
     .container {
         padding: 20px;
