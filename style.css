@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url('static/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    padding: 20px 70px;
+    color: #fff;
+}
+
+.current-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.date-container {
+    font-weight: 100;
+}
+
+.date-container .time {
+    font-size: 70px;
+}
+
+.date-container #am-pm {
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.date-container .date {
+    font-size: 30px;
+}
+
+.search-container {
+    margin-top: 20px;
+}
+
+.search-container input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-container button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background: #3c3c44;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background: #555;
+}
+
+.place-container {
+    text-align: end;
+}
+
+.place-container .time-zone {
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.place-container .country {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.current-info .others {
+    display: flex;
+    flex-direction: column;
+    background: rgba(24, 24, 27, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 1px solid #eee;
+}
+
+/* Updated Current Temperature Container */
+.current-temp-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7); /* Blackish with transparency */
+    color: white; /* White text for better readability */
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 400px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icon-container {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-icon {
+    width: 70px;
+    height: 70px;
+}
+
+.temp-details {
+    flex: 1.5;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.current-temp {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.temp-description {
+    font-size: 18px;
+    color: #ddd; /* Lighter color for description */
+}
+
+/* Ensure icon and temperature info stays after search */
+#city-input:focus + #search-btn + .current-temp-container {
+    display: flex;
+}
+
+/* Media Queries for responsiveness */
+@media only screen and (max-width: 730px) {
+    .container {
+        padding: 20px;
+    }
+
+    .search-container input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .date-container .time {
+        font-size: 50px;
+    }
+
+    .date-container #am-pm {
+        font-size: 20px;
+    }
+
+    .date-container .date {
+        font-size: 20px;
+    }
+
+    .place-container {
+        text-align: end;
+        margin-top: 15px;
+    }
+
+    .place-container .time-zone {
+        font-size: 20px;
+    }
+
+    .current-info .others {
+        padding: 12px;
+    }
+
+    .current-info .others .weather-item {
+        font-size: 14px;
+    }
+
+    .current-temp-container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .current-temp {
+        font-size: 36px;
+    }
+
+    .temp-description {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .current-temp-container {
+        max-width: 80%;
+    }
+}
